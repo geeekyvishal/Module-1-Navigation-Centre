@@ -268,7 +268,8 @@ export function NavSystem() {
         Object.entries(mainData.items).forEach(([sub, subData]) => {
           if (
             sub.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            //@ts-expect-error
+            // @ts-expect-error: This is necessary because of X reason
+
             subData.items?.some((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
           ) {
             filteredItems[sub] = subData
@@ -288,7 +289,8 @@ export function NavSystem() {
   React.useEffect(() => {
     if (activeDetail) {
       setBackgroundImage(
-        //@ts-expect-error
+        // @ts-expect-error: This is necessary because of X reason
+
         filteredData[activeMain!]?.items[activeSub!]?.items.find((item) => item.name === activeDetail)?.image ?? "",
       )
     } else if (activeSub) {
